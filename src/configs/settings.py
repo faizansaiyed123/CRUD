@@ -1,29 +1,19 @@
-
 from pydantic_settings import BaseSettings
-from dotenv import load_dotenv
-from os.path import join, dirname, abspath
+from dotenv import load_dotenv, find_dotenv
 
 
-env_file = join(dirname(abspath(__file__)), "..", ".env")  
-load_dotenv(env_file, override=True)  
-
+load_dotenv(find_dotenv(), override=True)
 
 class Settings(BaseSettings):
-    """
-    Use this class for adding constants from .env file
-    """
     SECRET_KEY: str
     ALGORITHM: str
     ACCESS_TOKEN_EXPIRE_MINUTES: int
+    DATABASE_URL: str
     PORT: int = 8000
     SERVER_TIMEOUT: int = 60
-    DATABASE_URL: str
-
-
 
     class Config:
-        env_file = env_file 
+        env_file_encoding = "utf-8"
         extra = "allow"
 
 settings = Settings()
-
