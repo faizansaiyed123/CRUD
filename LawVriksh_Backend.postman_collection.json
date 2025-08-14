@@ -1,0 +1,159 @@
+{
+    "info": {
+        "name": "LawVriksh Backend",
+        "_postman_id": "12345-67890-abcdef",
+        "description": "CRUD, Like & Comment APIs for LawVriksh backend",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Signup",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{ \"username\": \"testuser\", \"password\": \"testpass\" }"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/auth/signup",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "auth", "signup"]
+                }
+            }
+        },
+        {
+            "name": "Login",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{ \"username\": \"testuser\", \"password\": \"testpass\" }"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/auth/login",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "auth", "login"]
+                }
+            }
+        },
+        {
+            "name": "Create Post",
+            "request": {
+                "method": "POST",
+                "header": [
+                    { "key": "Content-Type", "value": "application/json" },
+                    { "key": "Authorization", "value": "Bearer {{access_token}}" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{ \"title\": \"My First Blog\", \"content\": \"This is a sample post\" }"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/posts/",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "posts"]
+                }
+            }
+        },
+        {
+            "name": "Get All Posts",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{base_url}}/api/posts/",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "posts"]
+                }
+            }
+        },
+        {
+            "name": "Update Post",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    { "key": "Content-Type", "value": "application/json" },
+                    { "key": "Authorization", "value": "Bearer {{access_token}}" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{ \"title\": \"Updated Title\", \"content\": \"Updated content\" }"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/posts/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "posts", "1"]
+                }
+            }
+        },
+        {
+            "name": "Delete Post",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{access_token}}" }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/posts/1",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "posts", "1"]
+                }
+            }
+        },
+        {
+            "name": "Like Post",
+            "request": {
+                "method": "POST",
+                "header": [
+                    { "key": "Authorization", "value": "Bearer {{access_token}}" }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/api/posts/1/like",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "posts", "1", "like"]
+                }
+            }
+        },
+        {
+            "name": "Add Comment",
+            "request": {
+                "method": "POST",
+                "header": [
+                    { "key": "Content-Type", "value": "application/json" },
+                    { "key": "Authorization", "value": "Bearer {{access_token}}" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{ \"content\": \"Nice post!\" }"
+                },
+                "url": {
+                    "raw": "{{base_url}}/api/posts/1/comment",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "posts", "1", "comment"]
+                }
+            }
+        },
+        {
+            "name": "Get Comments",
+            "request": {
+                "method": "GET",
+                "url": {
+                    "raw": "{{base_url}}/api/posts/1/comments",
+                    "host": ["{{base_url}}"],
+                    "path": ["api", "posts", "1", "comments"]
+                }
+            }
+        }
+    ]
+}
