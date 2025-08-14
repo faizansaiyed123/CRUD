@@ -110,4 +110,4 @@ Usage:
 
 Notes:
 1: Ensure your FastAPI server is running:
--> uvicorn app.main:app --reload
+-> uvicorn main:app --reload
