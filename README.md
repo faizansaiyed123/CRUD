@@ -67,29 +67,20 @@ Open http://127.0.0.1:8000/docs in your browser.
 
 
 
-Postman Collection :
-1: Open Postman.
-Click Import → File, and select LawVriksh_Backend.postman_collection.json.
+Postman Collection Setup:
+1: Import the collection
+Open Postman → Import → File → Select LawVriksh_Backend.postman_collection.json
 
-2: The collection will appear in your workspace.
-
-3: Create a Postman Environment:
-
-4: Click the gear icon → Manage Environments → Add.
-
-5: Name it LawVriksh.
-
-6: Add variables:
-
+2: Create an environment
+Click the gear icon → Manage Environments → Add
+Name: LawVriksh
+Add variables:
 Key	Value
-7: base_url	http://127.0.0.1:8000
-8: access_token	(leave empty initially)
+base_url	http://127.0.0.1:8000
+access_token	(leave empty initially)
 
-9: Save the environment and select it in Postman.
-
-10: Open the Signup request and in Login request in Postman.
-11: Go to the Tests tab.
-12: Paste the following script:
+3:Add auto-token capture script
+In both Signup and Login requests, go to the Tests tab and paste:
 
 const response = pm.response.json();
 const token = response.token || response.data?.token || response.data?.access_token;
@@ -98,17 +89,25 @@ if (token) {
 }
 
 
-
 Usage:
-Run Signup first to create a new user.
-Run Login to obtain the access_token.
-Copy the returned token into the access_token environment variable.
-You can now test all authenticated endpoints (Create Post, Update, Delete, Like, Comment).
-Non-authenticated endpoints (Get Posts, Get Comments) can be tested directly.
+
+1: Run Signup to create a new user.
+-> The token will be returned and stored automatically in the access_token environment variable.
+
+2: Run Login to log in with your credentials.
+->The script will update the token automatically.
+
+3:Test authenticated endpoints:
+-> Create Post
+->Update Post
+->Delete Post
+->Like Post
+->Comment on Post
+
+4:Test non-authenticated endpoints directly:
+->Get Posts
+->Get Comments
 
 Notes:
-Make sure your FastAPI server is running:
-uvicorn app.main:app --reload
-
-
-Update the .env file with your database credentials and secret key before running.
+1: Ensure your FastAPI server is running:
+-> uvicorn app.main:app --reload
